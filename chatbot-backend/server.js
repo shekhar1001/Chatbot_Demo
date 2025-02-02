@@ -22,7 +22,7 @@ const qaData = [
       "Can you tell me what M.A.P. Tech does?"
     ],
     answer: "M.A.P. Tech specializes in a variety of IT solutions including AI ChatBot Development, System/Software Development, Mobile App Development, Website Development, UI/UX Design, and Graphics Design.",
-    keywords: ["services", "what does", "offer", "do", "specializes in"]
+    keywords: ["services","service", "what does", "offer", "do", "specializes in"]
   },
   {
     question: [
