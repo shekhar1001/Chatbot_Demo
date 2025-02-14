@@ -5,7 +5,7 @@ import './Chatbot.css';
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-  const [isOpen, setIsOpen] = useState(false);  // To manage the popup visibility
+  const [isOpen, setIsOpen] = useState(false); // Toggle chatbot popup
 
   const sendMessage = async () => {
     if (input.trim()) {
@@ -25,18 +25,33 @@ const Chatbot = () => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      sendMessage();
+    }
+  };
+
   const toggleChatbot = () => {
     setIsOpen(!isOpen);
   };
 
   return (
     <div>
-      {/* Button to toggle chatbot */}
-      {!isOpen && (
-        <button className="chat-toggle-button" onClick={toggleChatbot}>
-          Chat with us
-        </button>
-      )}
+      {/* Header text that disappears when chatbot opens and reappears after closing */}
+      {!isOpen && <div className="chatbot-header">Want to know more?</div>}
+
+      {/* Animated Chatbot Robot */}
+      <div className="robot" onClick={toggleChatbot}>
+        <div className="face">
+          <div className="eye"></div>
+          <div className="eye"></div>
+        </div>
+        <div className="mouth"></div>
+        <div className="arms left-arm"></div>
+        <div className="arms right-arm"></div>
+        <div className="legs left-leg"></div>
+        <div className="legs right-leg"></div>
+      </div>
 
       {/* Chatbot Popup */}
       {isOpen && (
@@ -56,6 +71,7 @@ const Chatbot = () => {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
               placeholder="Ask me something..."
             />
             <button onClick={sendMessage}>Send</button>
